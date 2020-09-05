@@ -10,6 +10,7 @@ using namespace std;
 
 int Suma_con_Recursividad(int, int);
 int Suma_Iterativa(int, int);
+int Palindromo_Recursivo(string);
 int Convertir_a_Decimal_Iterativa(int, int, int);
 
 int main(/*array<System::String ^> ^args*/)
@@ -75,12 +76,39 @@ int main(/*array<System::String ^> ^args*/)
 		{
 			cout << "Usted ha seleccionado realizarlo de forma recursiva" << endl;
 			cout << "ingrese la palabra" << endl;
-			
+			string palabra, reversa;
+			cin >> palabra;
+			reversa = Palindromo_Recursivo(palabra);
+			cout << reversa;
+			if (palabra == reversa)
+			{
+				cout << "Es palindromo";
+			}
+			else
+			{
+				cout << "No es palindromo";
+			}
 		}
 		else if (op2 == 2)
 		{
 			cout << "Usted ha seleccionado realizarlo de forma iterativa" << endl;
-
+			int i = 0, j = 0;
+			string palabra = " ";
+			cout << "ingrese palabra " << endl;
+			cin >> palabra;
+			for (i = 0; i < palabra.length(); i++)
+			{
+				for (j = palabra.length() - 1; j >= 0; j--)
+				{
+					if (palabra[i] == palabra[j])
+					{
+						cout << "es palindroma " << endl;
+					}
+					else {
+						cout << "no lo es " << endl;
+					}
+				}
+			}
 		}
 		else
 		{
@@ -178,6 +206,15 @@ int Suma_Iterativa(int num1, int num2) {
 		result = result + num1;
 	}
 	return result;
+}
+
+int Palindromo_Recursivo(string p) {
+	int r;
+	for (int i = p.size() - 1; i >= 0; i--)
+	{
+		r += p[i];
+	}
+	return r;
 }
 
 int Convertir_a_Decimal_Iterativa(int dato, int base, int size){
